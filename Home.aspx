@@ -66,7 +66,18 @@
 
         </div>
 
+        <br />
+        <br />
+
         <div>
+
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="recipeID" DataSourceID="RecipeDataSource" CssClass="cssgridview">
+                <Columns>
+                    <asp:BoundField DataField="recipeName" HeaderText="Recipe Name" SortExpression="recipeName" />
+                    <asp:BoundField DataField="submittedBy" HeaderText="Submitted By" SortExpression="submittedBy" />
+                    <asp:HyperLinkField DataNavigateUrlFields="recipeID" DataNavigateUrlFormatString="Recipe.aspx?recipeID={0}" Text="Select" />
+                </Columns>
+            </asp:GridView>
 
         </div>
 
