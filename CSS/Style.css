@@ -1,0 +1,25 @@
+﻿body {
+    text-align: center;
+    color: #696969;
+    background-color: #D2B48C;
+}
+
+h1{
+    font-size:24pt;
+    font-weight:bold;
+}
+
+h2{
+    font-size:14pt;
+}
+
+#footer{
+   position:absolute;
+   bottom:0;
+   width:100%;
+}
+
+#Nav{
+    font-weight:bold;
+    font-size:16pt;
+}
