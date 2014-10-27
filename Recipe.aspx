@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:SqlDataSource ID="RecipeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:msci3300_g3ConnectionString %>" DeleteCommand="DELETE FROM [fang_HW6] WHERE [recipeID] = @recipeID" InsertCommand="INSERT INTO [fang_HW6] ([recipeName], [submittedBy], [Ingred1], [Ingred2], [Ingred3], [Ingred4], [Ingred5], [Prep], [Notes]) VALUES (@recipeName, @submittedBy, @Ingred1, @Ingred2, @Ingred3, @Ingred4, @Ingred5, @Prep, @Notes)" SelectCommand="SELECT * FROM [fang_HW6]" UpdateCommand="UPDATE [fang_HW6] SET [recipeName] = @recipeName, [submittedBy] = @submittedBy, [Ingred1] = @Ingred1, [Ingred2] = @Ingred2, [Ingred3] = @Ingred3, [Ingred4] = @Ingred4, [Ingred5] = @Ingred5, [Prep] = @Prep, [Notes] = @Notes WHERE [recipeID] = @recipeID">
+        <asp:SqlDataSource ID="RecipeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:msci3300_g3ConnectionString %>" DeleteCommand="DELETE FROM [fang_HW6] WHERE [recipeID] = @recipeID" InsertCommand="INSERT INTO [fang_HW6] ([recipeName], [submittedBy], [Ingred1], [Ingred2], [Ingred3], [Ingred4], [Ingred5], [Prep], [Notes]) VALUES (@recipeName, @submittedBy, @Ingred1, @Ingred2, @Ingred3, @Ingred4, @Ingred5, @Prep, @Notes)" SelectCommand="SELECT * FROM [fang_HW6] WHERE ([recipeID] = @recipeID)" UpdateCommand="UPDATE [fang_HW6] SET [recipeName] = @recipeName, [submittedBy] = @submittedBy, [Ingred1] = @Ingred1, [Ingred2] = @Ingred2, [Ingred3] = @Ingred3, [Ingred4] = @Ingred4, [Ingred5] = @Ingred5, [Prep] = @Prep, [Notes] = @Notes WHERE [recipeID] = @recipeID">
             <DeleteParameters>
                 <asp:Parameter Name="recipeID" Type="Int32" />
             </DeleteParameters>
@@ -26,6 +26,9 @@
                 <asp:Parameter Name="Prep" Type="String" />
                 <asp:Parameter Name="Notes" Type="String" />
             </InsertParameters>
+            <SelectParameters>
+                <asp:QueryStringParameter Name="recipeID" QueryStringField="recipeID" Type="Int32" />
+            </SelectParameters>
             <UpdateParameters>
                 <asp:Parameter Name="recipeName" Type="String" />
                 <asp:Parameter Name="submittedBy" Type="String" />
@@ -66,7 +69,204 @@
 
         </div>
 
-        <div>
+        <br />
+        <br />
+
+        <div id="Main">
+            <asp:FormView ID="FormView1" runat="server" DataKeyNames="recipeID" DataSourceID="RecipeDataSource">
+                <EditItemTemplate>
+                    <table>
+                        <tr>
+                            <td id="tb_left">
+                                Recipe Name:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="recipeNameTextBox" runat="server" Text='<%# Bind("recipeName") %>' />                            
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Submitted By:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="submittedByTextBox" runat="server" Text='<%# Bind("submittedBy") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #1:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="Ingred1TextBox" runat="server" Text='<%# Bind("Ingred1") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #2:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="Ingred2TextBox" runat="server" Text='<%# Bind("Ingred2") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #3:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="Ingred3TextBox" runat="server" Text='<%# Bind("Ingred3") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #4:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="Ingred4TextBox" runat="server" Text='<%# Bind("Ingred4") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #5:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="Ingred5TextBox" runat="server" Text='<%# Bind("Ingred5") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Preparation:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="PrepTextBox" runat="server" Text='<%# Bind("Prep") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Notes:
+                            </td>
+                            <td id="tb_right">
+                                <asp:TextBox ID="NotesTextBox" runat="server" Text='<%# Bind("Notes") %>' />
+                            </td>
+                        </tr>
+
+                        <tr id="tb_bottom">
+                            <td>
+                                <asp:Button ID="btn_Save" runat="server" CausesValidation="True" CommandName="Update" Text="Save" />
+                            </td>
+                            <td>
+                                <asp:Button ID="btn_Cancel" runat="server" CausesValidation="false" CommandName="Cancel" Text="Cancel" />
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </EditItemTemplate>
+                
+                <ItemTemplate>
+                    <table>
+                        <tr>
+                            <td id="tb_left">
+                                Recipe Name:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="recipeNameLabel" runat="server" Text='<%# Bind("recipeName") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Submitted By:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="submittedByLabel" runat="server" Text='<%# Bind("submittedBy") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #1:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="Ingred1Label" runat="server" Text='<%# Bind("Ingred1") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #2:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="Ingred2Label" runat="server" Text='<%# Bind("Ingred2") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #3:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="Ingred3Label" runat="server" Text='<%# Bind("Ingred3") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #4:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="Ingred4Label" runat="server" Text='<%# Bind("Ingred4") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Ingredient #5:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="Ingred5Label" runat="server" Text='<%# Bind("Ingred5") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Preparation:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="PrepLabel" runat="server" Text='<%# Bind("Prep") %>' />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="tb_left">
+                                Notes:
+                            </td>
+                            <td id="tb_right">
+                                <asp:Label ID="NotesLabel" runat="server" Text='<%# Bind("Notes") %>' />
+                            </td>
+                        </tr>
+
+                        <tr id="tb_bottom">
+                            <td>
+                                <asp:Button ID="btn_Edit" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                            </td>
+                            <td>
+                                <asp:Button ID="btn_Delete" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </ItemTemplate>
+
+            </asp:FormView>
 
         </div>
 
