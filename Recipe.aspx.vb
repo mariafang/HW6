@@ -8,9 +8,17 @@ Partial Class _Default
 
     End Sub
 
+    Protected Sub FormView1_ItemDeleted(sender As Object, e As FormViewDeletedEventArgs) Handles FormView1.ItemDeleted
+
+        Dim deletedRecipe As String = e.Values("recipeName").ToString()
+        lbl_deleted.Text = deletedRecipe & "has been deleted from the database"
+        Response.AddHeader("REFRESH", "3;URL=./Home.aspx")
+
+    End Sub
+
     Protected Sub FormView1_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles FormView1.ItemUpdated
 
-        Response.Redirect("./Home.aspx")
+        Response.AddHeader("REFRESH", "3;URL=./Home.aspx")
 
     End Sub
 End Class

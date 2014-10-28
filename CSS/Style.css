@@ -1,8 +1,8 @@
-﻿body {
-    text-align: center;
-    color: #696969;
-    background-color: #D2B48C;
-}
+﻿body { 
+    text-align: center; 
+    color: #696969; 
+    background-color: #D2B48C; 
+} 
 
 h1{
     font-size:24pt;
@@ -17,8 +17,16 @@ table{
     width:auto;
     margin-left: auto;
     margin-right: auto;
-    border:solid 1px #ffffff;
     border-collapse:collapse;
+}
+
+a { text-decoration:none; font-weight: bold; }
+a:link, a:visited { color:#696969; }
+
+#rfv{
+    color:red;
+    text-align:left;
+    padding:10px;
 }
 
 #tb_left{
@@ -47,18 +55,15 @@ table{
 
 #footer{
    position:absolute;
-   bottom:0;
+   bottom:217px;
    width:100%;
 }
 
 #Main{
     margin-left: auto;
     margin-right: auto;
-}
-
-#Nav{
-    font-weight:bold;
-    font-size:16pt;
+    width:500px;
+    text-align:left;
 }
 
 .cssgridview{

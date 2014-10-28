@@ -55,14 +55,14 @@
         </div>
 
         <div id="Nav">
-            <asp:HyperLink ID="HyperLink1" runat="server">Home</asp:HyperLink>
+            <asp:HyperLink ID="hl_Home" runat="server" NavigateUrl="~/Home.aspx">Home</asp:HyperLink>
 
         &nbsp;|
-            <asp:HyperLink ID="HyperLink2" runat="server">New Recipe</asp:HyperLink>
+            <asp:HyperLink ID="hl_New" runat="server" NavigateUrl="~/NewRecipe.aspx">New Recipe</asp:HyperLink>
 &nbsp;|
-            <asp:HyperLink ID="HyperLink3" runat="server">About us</asp:HyperLink>
+            <asp:HyperLink ID="hl_aboutUs" runat="server" NavigateUrl="~/AboutUs.aspx">About us</asp:HyperLink>
 &nbsp;|
-            <asp:HyperLink ID="HyperLink4" runat="server">Contact</asp:HyperLink>
+            <asp:HyperLink ID="hl_Contact" runat="server" NavigateUrl="~/ContactUs.aspx">Contact</asp:HyperLink>
 
         </div>
 

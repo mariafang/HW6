@@ -58,21 +58,23 @@
         </div>
 
         <div id="Nav">
-            <asp:HyperLink ID="HyperLink1" runat="server">Home</asp:HyperLink>
+            <asp:HyperLink ID="hl_Home" runat="server" NavigateUrl="~/Home.aspx">Home</asp:HyperLink>
 
         &nbsp;|
-            <asp:HyperLink ID="HyperLink2" runat="server">New Recipe</asp:HyperLink>
+            <asp:HyperLink ID="hl_New" runat="server" NavigateUrl="~/NewRecipe.aspx">New Recipe</asp:HyperLink>
 &nbsp;|
-            <asp:HyperLink ID="HyperLink3" runat="server">About us</asp:HyperLink>
+            <asp:HyperLink ID="hl_aboutUs" runat="server" NavigateUrl="~/AboutUs.aspx">About us</asp:HyperLink>
 &nbsp;|
-            <asp:HyperLink ID="HyperLink4" runat="server">Contact</asp:HyperLink>
+            <asp:HyperLink ID="hl_Contact" runat="server" NavigateUrl="~/ContactUs.aspx">Contact</asp:HyperLink>
 
         </div>
 
-        <br />
+        <asp:Label ID="lbl_deleted" runat="server"></asp:Label>
+
         <br />
 
-        <div id="Main">
+        <div>
+
             <asp:FormView ID="FormView1" runat="server" DataKeyNames="recipeID" DataSourceID="RecipeDataSource">
                 <EditItemTemplate>
                     <table>
@@ -83,6 +85,9 @@
                             <td id="tb_right">
                                 <asp:TextBox ID="recipeNameTextBox" runat="server" Text='<%# Bind("recipeName") %>' />                            
                             </td>
+                            <td id="rfv">
+                                <asp:RequiredFieldValidator ID="rfv_recipeName" runat="server" ErrorMessage="Please enter the recipe name!" ControlToValidate="recipeNameTextBox"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
 
                         <tr>
@@ -92,6 +97,9 @@
                             <td id="tb_right">
                                 <asp:TextBox ID="submittedByTextBox" runat="server" Text='<%# Bind("submittedBy") %>' />
                             </td>
+                            <td id="rfv">
+                                <asp:RequiredFieldValidator ID="rfv_submittedBy" runat="server" ErrorMessage="Please enter who submits the recipe!" ControlToValidate="submittedByTextBox"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
 
                         <tr>
@@ -100,6 +108,9 @@
                             </td>
                             <td id="tb_right">
                                 <asp:TextBox ID="Ingred1TextBox" runat="server" Text='<%# Bind("Ingred1") %>' />
+                            </td>
+                            <td id="rfv">                   
+                                <asp:RequiredFieldValidator runat="server" ErrorMessage="Please enter at least one ingredient!" ID="rfv_ingred1" ControlToValidate="Ingred1TextBox"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
 
@@ -145,6 +156,9 @@
                             </td>
                             <td id="tb_right">
                                 <asp:TextBox ID="PrepTextBox" runat="server" Text='<%# Bind("Prep") %>' />
+                            </td>
+                            <td id="rfv">
+                                <asp:RequiredFieldValidator ID="rfv_prep" runat="server" ErrorMessage="Please enter how to prepare!" ControlToValidate="PrepTextBox"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
 
@@ -267,6 +281,8 @@
                 </ItemTemplate>
 
             </asp:FormView>
+
+            
 
         </div>
 
