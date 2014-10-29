@@ -23,6 +23,10 @@ table{
 a { text-decoration:none; font-weight: bold; }
 a:link, a:visited { color:#696969; }
 
+#Notes{
+    color:red;
+}
+
 #rfv{
     color:red;
     text-align:left;

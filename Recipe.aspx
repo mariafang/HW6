@@ -58,7 +58,7 @@
         </div>
 
         <div id="Nav">
-            <asp:HyperLink ID="hl_Home" runat="server" NavigateUrl="~/Home.aspx">Home</asp:HyperLink>
+            <asp:HyperLink ID="hl_Home" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink>
 
         &nbsp;|
             <asp:HyperLink ID="hl_New" runat="server" NavigateUrl="~/NewRecipe.aspx">New Recipe</asp:HyperLink>
@@ -69,7 +69,9 @@
 
         </div>
 
-        <asp:Label ID="lbl_deleted" runat="server"></asp:Label>
+        <br />
+
+        <span id="Notes"><asp:Label ID="lbl_deleted" runat="server"></asp:Label></span>
 
         <br />
 
@@ -172,7 +174,7 @@
                         </tr>
 
                         <tr id="tb_bottom">
-                            <td>
+                            <td style="text-align:right">
                                 <asp:Button ID="btn_Save" runat="server" CausesValidation="True" CommandName="Update" Text="Save" />
                             </td>
                             <td>

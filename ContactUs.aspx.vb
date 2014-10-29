@@ -6,6 +6,12 @@ Imports System.Net
 Partial Class _default
     Inherits System.Web.UI.Page
 
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        senderAddress.Focus()
+
+    End Sub
+
     Protected Sub sendMail_Click(sender As Object, e As EventArgs) Handles sendMail.Click
         'Declare variables to create a new mail message and client connection.
         Dim msg As New MailMessage
@@ -31,8 +37,7 @@ Partial Class _default
         confirmSent.Text = "Thank you.  Your message has been sent."
 
         'After the message has displayed for 2 seconds, "reload" the page.
-        Response.AddHeader("REFRESH", "2;URL=./Home.aspx")
-
+        Response.AddHeader("REFRESH", "2;URL=./Default.aspx")
 
     End Sub
 

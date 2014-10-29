@@ -13,7 +13,7 @@ Partial Class _Default
 
         Dim InsertedRecipe As String = e.Values("recipeName").ToString()
         lbl_Inserted.Text = InsertedRecipe & "has been added to the database"
-        Response.AddHeader("REFRESH", "3;URL=./Home.aspx")
+        Response.AddHeader("REFRESH", "2;URL=./Default.aspx")
 
     End Sub
 End Class
